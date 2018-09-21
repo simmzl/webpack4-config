@@ -1,10 +1,25 @@
 Webpack项目工程化构建配置。
 
+
+Usage:  
+
+```
+git clone https://github.com/simmzl/webpack4-config.git
+
+npm i
+
+npm run dev
+
+npm run build
+```
+
+---
+
 # 创建package.json  
 ```
 npm init
 ```
-
+一路回车：
 ```
 package name: (test) test
 version: (1.0.0)
@@ -392,7 +407,7 @@ cnpm i --save-dev babel-preset-stage-0
 ### url-loader  
 使用url-loader而非file-loader，因为前者包含了后者，提供了更为强大的功能。他可以解决css样式中引入的图片文件等打包后路径指向不正确和将图片转为DataURL模式（base64编码的字符串形式，[More：DATA URL简介及DATA URL的利弊](https://www.cnblogs.com/xuechenlei/p/5940371.html)）从而提高网站的加载速度。更多参考：[file-loader 和 url-loader](https://blog.csdn.net/qq_38652603/article/details/73835153)  
 ```
-cnpm i --save-dev url-loader
+cnpm i --save-dev url-loader file-loader
 ```
 ```javascript
 const config = {
@@ -401,7 +416,9 @@ const config = {
             // 处理引入的图片视频字体等文件的loader
             // 将小于10k的图片文件转为DataURL,并且设置默认的dist中存放方式
             test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)(\?\S*)?$/,
-            loader: "url-loader?limit=10240&name=static/assets/[name]_[hash].[ext]"
+            loader: "url-loader?limit=102400&name=assets/img/[name]_[hash].[ext]"
+            // 一样的作用
+            // loader: "url-loader?limit=10240&name=assets/[name]_[hash].[ext]"
         }]
     }
 };

@@ -143,7 +143,9 @@ const config = {
                 // 处理引入的图片视频字体等文件的loader
                 // 将小于10k的图片文件转为DataURL,并且设置默认的dist中存放方式
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)(\?\S*)?$/,
-                loader: "url-loader?limit=102400&name=[name]_[hash].[ext]&outputPath=assets/img/"
+                loader: "url-loader?limit=102400&name=assets/img/[name]_[hash].[ext]"
+                // 一样的作用
+                // loader: "url-loader?limit=102400&name=[name]_[hash].[ext]&outputPath=assets/img/"
             }
         ]
     },
